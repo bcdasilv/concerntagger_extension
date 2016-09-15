@@ -6,6 +6,6 @@ Two main features implemented in this extension:
    * New metric view for LCbC (Lack of Concern-based Cohesion) metric.
    * LCbC computation.
 
-This is an Eclipse plugin, so there is two ways of executing this project:
+This is an Eclipse plugin, so there are two ways of executing this project:
    * Importing the project as an eclipse plugin project and then run as eclipse plugin.
    * Install the plugin jar generated previously or download from the repository.
