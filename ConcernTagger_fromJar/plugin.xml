@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+
+ConcernTagger - A concern modeling and analysis plug-in for Eclipse
+
+Copyright (C) 2007  Columbia University
+
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+$Revision: 1.25 $
+
+ -->
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Concerns"
+            id="edu_columbia_concerns"/>
+      <view
+            allowMultiple="true"
+            category="edu_columbia_concerns"
+            class="edu.columbia.concerns.ui.ConcernView"
+            icon="icons/concerntagger.png"
+            id="edu_columbia_concerns_ConcernView"
+            name="Concern View"/>
+      <view
+            allowMultiple="true"
+            category="edu_columbia_concerns"
+            class="edu.columbia.concerns.metrics.MetricsView"
+            icon="icons/concerntagger.png"
+            id="edu_columbia_concerns_MetricsView"
+            name="Concern Metrics"/>
+      <view
+            allowMultiple="true"
+            category="edu_columbia_concerns"
+            class="edu.columbia.concerns.metrics.IntersectionView"
+            icon="icons/concerntagger.png"
+            id="edu_columbia_concerns_IntersectionView"
+            name="Concern Intersection"/>
+      <view
+            allowMultiple="true"
+            category="edu_columbia_concerns"
+            class="edu.columbia.concerns.metrics.LCCMetricView"
+            icon="icons/concerntagger.png"
+            id="edu_columbia_concerns_LCCView"
+            name="LCC Metric">
+      </view>
+      <view
+            allowMultiple="true"
+            category="edu_columbia_concerns"
+            class="edu.columbia.concerns.metrics.ConcernMappingReportView"
+            icon="icons/concerntagger.png"
+            id="edu_columbia_concerns_ConcernMappingReportView"
+            name="Concern Mapping Report">
+      </view>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.7"
+               relationship="bottom"
+               relative="org.eclipse.jdt.ui.PackageExplorer"
+               id="edu_columbia_concerns_ConcernView"/>
+      </perspectiveExtension>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="edu_columbia_concerns_EditorRightMouse_ExplorerContribution"
+            objectClass="org.eclipse.jdt.core.IMember">
+         <action
+               class="edu.columbia.concerns.actions.UnassignElementsAction"
+               id="edu_columbia_concerns_EditorRightMouseUnassignAction_Explorer"
+               label="Unassign"
+               icon="icons/link_break.png"
+               style="pulldown"/>
+         <action
+               class="edu.columbia.concerns.actions.AssignElementsAction"
+               id="edu_columbia_concerns_EditorRightMouseAssignAction_Explorer"
+               label="Assign"
+               icon="icons/link.png"
+               style="pulldown"/>
+      </objectContribution>
+      <viewerContribution
+            id="edu_columbia_concerns_EditorRightMouse_EditorContribution"
+            targetID="org.eclipse.jdt.ui.CompilationUnitEditor.EditorContext">
+         <action
+               class="edu.columbia.concerns.actions.UnassignElementsAction"
+               id="edu_columbia_concerns_EditorRightMouseUnassignAction_Editor"
+               label="Unassign"
+               icon="icons/link_break.png"
+               menubarPath="additions"
+               style="pulldown"/>
+         <action
+               class="edu.columbia.concerns.actions.AssignElementsAction"
+               id="edu_columbia_concerns_EditorRightMouseAssignAction_Editor"
+               label="Assign"
+               icon="icons/link.png"
+               menubarPath="additions"
+               style="pulldown"/>
+      </viewerContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+         	id="edu_columbia_concerns_Decorator"
+         	label="Concern Decorator"
+         	class="edu.columbia.concerns.decorators.AssignedElementDecorator"
+         	adaptable="false"
+         	state="true"
+         	lightweight="true"
+         	location="BOTTOM_RIGHT">
+         <description>
+         	Highlights program elements assigned to concerns and appends the concern names. Parents of assigned elements are also highlighted (see the Preferences Page).
+         </description>
+         <enablement>
+         	<objectClass name="java.lang.Object"/>
+         </enablement>
+      </decorator>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="Concerns"
+            class="edu.columbia.concerns.ui.ConcernViewPreferencePage"
+            id="edu_columbia_concerns_PreferencePage">
+      </page>
+   </extension>
+   
+   <extension point="org.eclipse.core.runtime.preferences">
+	  <initializer class="edu.columbia.concerns.ConcernTaggerPreferenceInitializer"/>
+   </extension>
+   
+      <!--extension
+         point="org.eclipse.ui.workbench.texteditor.rulerColumns">
+      <column
+            class="columbia.concerns.ContributedRulerColorColumn"
+            enabled="true"
+            global="true"
+            id="columbia.concerns.colorColumn"
+            includeInMenu="true"
+            name="columbiacolor">
+         <placement
+               gravity="0.9">
+            <after
+                  id="org.eclipse.ui.editors.columns.annotations">
+            </after>
+         </placement>
+         <targetClass
+               class="org.eclipse.ui.texteditor.AbstractDecoratedTextEditor">
+         </targetClass>
+      </column>
+   </extension-->
+   
+   
+</plugin>

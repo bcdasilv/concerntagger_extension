@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Created-By: 1.6.0-b105 (Sun Microsystems Inc.)
+Bundle-ManifestVersion: 2
+Bundle-Name: Concern Analysis Plug-in
+Bundle-SymbolicName: edu.columbia.concerns;singleton:=true
+Bundle-Version: 2.0
+Bundle-ClassPath: .,lib/hsqldb.jar
+Bundle-Activator: edu.columbia.concerns.ConcernTagger
+Bundle-Localization: plugin
+Export-Package: edu.columbia.concerns; uses:="org.eclipse.jdt.core,  o
+ rg.eclipse.jdt.core.search,  org.eclipse.ui.plugin,  org.osgi.framewo
+ rk,  org.eclipse.core.runtime.preferences",edu.columbia.concerns.acti
+ ons; uses:="edu.columbia.concerns.ui.concerntree,  org.eclipse.ui,  o
+ rg.eclipse.jface.action,  edu.columbia.concerns.model,  edu.columbia.
+ concerns.metrics,  edu.columbia.concerns.ui,  org.eclipse.jdt.core,  
+ edu.columbia.concerns.util,  org.eclipse.jface.viewers,  org.eclipse.
+ swt.widgets,  edu.columbia.concerns.repository",edu.columbia.concerns
+ .decorators; uses:="edu.columbia.concerns.model,  org.eclipse.swt.gra
+ phics,  org.eclipse.jface.viewers,  edu.columbia.concerns,  org.eclip
+ se.jface.util",edu.columbia.concerns.model;uses:="org.eclipse.jdt.cor
+ e,edu.columbia.concerns.repository",edu.columbia.concerns.ui; uses:="
+ org.eclipse.jface.text,  org.eclipse.jface.text.source,  org.eclipse.
+ swt.events,  org.eclipse.ui,  org.eclipse.swt.custom,  org.eclipse.ui
+ .part,  org.eclipse.ui.texteditor.rulers,  edu.columbia.concerns.mode
+ l,  org.eclipse.jface.preference,  org.eclipse.swt.graphics,  org.ecl
+ ipse.jface.util,  org.eclipse.swt.widgets,  edu.columbia.concerns.rep
+ ository"
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.core.resources,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors
+Eclipse-LazyStart: true
+Bundle-Vendor: Marc Eaddy, Columbia University
+
